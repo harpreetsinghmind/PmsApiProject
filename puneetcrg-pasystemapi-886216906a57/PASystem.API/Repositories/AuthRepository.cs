@@ -320,10 +320,103 @@ namespace PASystem.API.Repositories
             }
 
         }
+        public DataSet getexrptresourceallocation()
+        {
 
+            try
+            {
+                SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[exrptresourceallocation]", ConfigManager.GetNewSqlConnection);
+                return sp.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
 
+        }
+        public DataSet getprojectleaveplannerreport()
+        {
 
+            try
+            {
+                SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[projectleaveplannerreport]", ConfigManager.GetNewSqlConnection);
+                return sp.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
 
+        }
+        public DataSet getoverduetask()
+        {
 
+            try
+            {
+                SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[overduetask]", ConfigManager.GetNewSqlConnection);
+                return sp.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+        public DataSet getplannedvsactual()
+        {
+
+            try
+            {
+                SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[plannedvsactual]", ConfigManager.GetNewSqlConnection);
+                return sp.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+        public DataSet getexrptresourceworkdetail()
+        {
+
+            try
+            {
+                SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[exrptresourceworkdetail]", ConfigManager.GetNewSqlConnection);
+                return sp.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+        public DataSet getprojectprofitablity()
+        {
+
+            try
+            {
+                SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[projectprofitablity]", ConfigManager.GetNewSqlConnection);
+                return sp.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+        public DataSet getmomreport()
+        {
+
+            try
+            {
+                SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[momreport]", ConfigManager.GetNewSqlConnection);
+                return sp.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
     }
 }

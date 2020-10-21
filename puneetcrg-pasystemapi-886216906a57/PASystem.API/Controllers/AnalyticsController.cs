@@ -179,7 +179,125 @@ namespace PASystem.API.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Some error occured in current request.");
             }
         }
-
+        [HttpGet]
+        public HttpResponseMessage getexrptresourceallocation()
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = _arepo.getexrptresourceallocation();
+                    return Request.CreateResponse(HttpStatusCode.OK, new { success = true, data = result });
+                }
+                else return Request.CreateErrorResponse(HttpStatusCode.NotFound, string.Join(", ", ModelState.Values.SelectMany(v => v.Errors)));
+            }
+            catch (Exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Some error occured in current request.");
+            }
+        }
+        [HttpGet]
+        public HttpResponseMessage getprojectleaveplannerreport()
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = _arepo.getprojectleaveplannerreport();
+                    return Request.CreateResponse(HttpStatusCode.OK, new { success = true, data = result });
+                }
+                else return Request.CreateErrorResponse(HttpStatusCode.NotFound, string.Join(", ", ModelState.Values.SelectMany(v => v.Errors)));
+            }
+            catch (Exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Some error occured in current request.");
+            }
+        }
+        [HttpGet]
+        public HttpResponseMessage getoverduetask()
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = _arepo.getoverduetask();
+                    return Request.CreateResponse(HttpStatusCode.OK, new { success = true, data = result });
+                }
+                else return Request.CreateErrorResponse(HttpStatusCode.NotFound, string.Join(", ", ModelState.Values.SelectMany(v => v.Errors)));
+            }
+            catch (Exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Some error occured in current request.");
+            }
+        }
+        [HttpGet]
+        public HttpResponseMessage getplannedvsactual()
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = _arepo.getplannedvsactual();
+                    return Request.CreateResponse(HttpStatusCode.OK, new { success = true, data = result });
+                }
+                else return Request.CreateErrorResponse(HttpStatusCode.NotFound, string.Join(", ", ModelState.Values.SelectMany(v => v.Errors)));
+            }
+            catch (Exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Some error occured in current request.");
+            }
+        }
+        [HttpGet]
+        public HttpResponseMessage getexrptresourceworkdetail()
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = _arepo.getexrptresourceworkdetail();
+                    return Request.CreateResponse(HttpStatusCode.OK, new { success = true, data = result });
+                }
+                else return Request.CreateErrorResponse(HttpStatusCode.NotFound, string.Join(", ", ModelState.Values.SelectMany(v => v.Errors)));
+            }
+            catch (Exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Some error occured in current request.");
+            }
+        }
+        [HttpGet]
+        public HttpResponseMessage getprojectprofitablity()
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = _arepo.getprojectprofitablity();
+                    return Request.CreateResponse(HttpStatusCode.OK, new { success = true, data = result });
+                }
+                else return Request.CreateErrorResponse(HttpStatusCode.NotFound, string.Join(", ", ModelState.Values.SelectMany(v => v.Errors)));
+            }
+            catch (Exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Some error occured in current request.");
+            }
+        }
+        [HttpGet]
+        public HttpResponseMessage getmomreport()
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = _arepo.getmomreport();
+                    return Request.CreateResponse(HttpStatusCode.OK, new { success = true, data = result });
+                }
+                else return Request.CreateErrorResponse(HttpStatusCode.NotFound, string.Join(", ", ModelState.Values.SelectMany(v => v.Errors)));
+            }
+            catch (Exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Some error occured in current request.");
+            }
+        }
 
 
 
