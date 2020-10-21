@@ -1,0 +1,945 @@
+INSERT INTO Permissions(
+Permission,
+Description,
+InActive,
+CreatedBy,
+CreatedDate
+)
+VALUES(
+	'COUNTRY_URL_VISIBILITY',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'COUNTRY_VIEW',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'COUNTRY_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'COUNTRY_EDIT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'COUNTRY_DELETE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'COUNTRY_CHANGE_STATUS',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'STATE_URL_VISIBILITY',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'STATE_VIEW',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'STATE_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'STATE_EDIT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'STATE_DELETE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'STATE_CHANGE_STATUS',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CITY_URL_VISIBILITY',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CITY_VIEW',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CITY_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CITY_EDIT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CITY_DELETE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CITY_CHANGE_STATUS',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'ZIPCODE_URL_VISIBILITY',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'ZIPCODE_VIEW',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'ZIPCODE_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'ZIPCODE_EDIT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'ZIPCODE_DELETE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'ZIPCODE_CHANGE_STATUS',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'BUSINESS_URL_VISIBILITY',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'BUSINESS_VIEW',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'BUSINESS_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'BUSINESS_EDIT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'BUSINESS_DELETE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'BUSINESS_CHANGE_STATUS',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'LANGUAGE_URL_VISIBILITY',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'LANGUAGE_VIEW',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'LANGUAGE_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'LANGUAGE_EDIT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'LANGUAGE_DELETE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'LANGUAGE_CHANGE_STATUS',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'KEYWORD_URL_VISIBILITY',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'KEYWORD_VIEW',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'KEYWORD_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'KEYWORD_EDIT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'KEYWORD_DELETE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'LEVEL_URL_VISIBILITY',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'LEVEL_VIEW',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'LEVEL_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'LEVEL_EDIT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'LEVEL_DELETE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'LEVEL_CHANGE_STATUS',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'LEVELELEMENT_URL_VISIBILITY',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'LEVELELEMENT_VIEW',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'LEVELELEMENT_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'LEVELELEMENT_EDIT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'LEVELELEMENT_DELETE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'LEVELELEMENT_CHANGE_STATUS',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'GROUP_URL_VISIBILITY',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'GROUP_VIEW',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'GROUP_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'GROUP_EDIT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'GROUP_DELETE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'GROUP_CHANGE_STATUS',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'ROLE_URL_VISIBILITY',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'ROLE_VIEW',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'ROLE_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'ROLE_EDIT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'ROLE_DELETE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'ROLE_CHANGE_STATUS',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CUSTOMER_URL_VISIBILITY',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CUSTOMER_VIEW',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CUSTOMER_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CUSTOMER_EDIT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CUSTOMER_DELETE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CUSTOMER_CHANGE_STATUS',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CUSTOMER_VIEW_ADDRESS',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CUSTOMER_ADD_ADDRESS',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CUSTOMER_EDIT_ADDRESS',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CUSTOMER_DELETE_ADDRESS',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CUSTOMER_ASSIGN_CONTACTPERSON',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CONTACTPERSON_URL_VISIBILITY',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CONTACTPERSON_VIEW',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CONTACTPERSON_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CONTACTPERSON_EDIT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CONTACTPERSON_DELETE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'CONTACTPERSON_CHANGE_STATUS',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'UDF_URL_VISIBILITY',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'UDF_VIEW',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'UDF_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'UDF_EDIT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'UDF_DELETE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'USER_URL_VISIBILITY',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'USER_VIEW',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'USER_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'USER_EDIT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'USER_DELETE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'SALES_URL_VISIBILITY',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'SALES_VIEW',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'SALES_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'SALES_EDIT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'SALES_DELETE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'SALES_CHANGE_STATUS',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'SALES_ASSIGN_CUSTOMER',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECT_URL_VISIBILITY',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECT_VIEW',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECT_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECT_EDIT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECT_DELETE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECT_LOCK',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECT_ARCHIVE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECT_REOPEN',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECT_CLOSE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECTPHASE_URL_VISIBILITY',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECTPHASE_VIEW',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECTPHASE_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECTPHASE_EDIT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECTPHASE_DELETE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECTPHASE_LOCK',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECTSUBPHASE_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECTPHASE_UPLOAD_CONTRACT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECTPHASE_COPY_PROJECT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECTASSIGN_URL_VISIBILITY',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECTASSIGN_VIEW',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECTASSIGN_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECTASSIGN_EDIT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECTASSIGN_DELETE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECTASSIGN_CHANGE_STATUS',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'PROJECTASSIGN_ASSIGNE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'TIMESHEET_URL_VISIBILITY',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'TIMESHEET_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'TIMESHEET_EDIT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'TIMESHEET_DELETE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'TIMESHEET_COPY_LASTWEEK',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'TIMESHEET_DETAIL_ADD',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'TIMESHEET_DETAIL_EDIT',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'TIMESHEET_DETAIL_DELETE',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'FULL',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+(
+	'MANAGER',
+	NULL,
+	0,
+	'',
+	GETDATE()
+)

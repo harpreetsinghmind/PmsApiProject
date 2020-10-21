@@ -1,0 +1,3 @@
+DROP PROCEDURE usp_ProjectVendorsGetAllForSelect
+DROP PROCEDURE usp_GetAllSalesPersonForSelect
+DROP PROCEDURE usp_OfficesGetAllForSelect

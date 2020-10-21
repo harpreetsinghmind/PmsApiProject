@@ -1,0 +1,9 @@
+*.suo
+.vs
+*.user
+/PASystem.API/obj
+/PASystem.API/bin
+/publish
+obj
+binBKP
+bin

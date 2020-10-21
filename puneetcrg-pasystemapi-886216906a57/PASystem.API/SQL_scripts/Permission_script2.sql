@@ -1,0 +1,19 @@
+INSERT INTO Permissions(
+Permission,
+Description,
+InActive,
+CreatedBy,
+CreatedDate
+)
+VALUES(
+	'SALES_VIEW_CUSTOMER',
+	NULL,
+	0,
+	'',
+	GETDATE()
+),
+('CUSTOMER_VIEW_CONTACTPERSON',
+	NULL,
+	0,
+	'',
+	GETDATE())

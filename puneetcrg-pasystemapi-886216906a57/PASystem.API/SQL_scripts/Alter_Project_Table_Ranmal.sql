@@ -1,0 +1,8 @@
+ALTER TABLE Projects
+ADD Locked BIT;
+ALTER TABLE Projects
+ADD StartDate DATETIME;
+ALTER TABLE Projects
+ADD EndDate DATETIME;
+ALTER TABLE Projects
+ADD ActualDate DATETIME;

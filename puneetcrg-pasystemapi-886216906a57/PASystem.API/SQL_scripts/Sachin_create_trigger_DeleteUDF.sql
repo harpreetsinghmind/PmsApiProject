@@ -1,0 +1,348 @@
+USE [PASystem]
+GO
+
+/****** Object:  Trigger [dbo].[DELETECITYUDF]    Script Date: 16-10-2019 21:22:36 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TRIGGER [dbo].[DELETECITYUDF]
+ON  [dbo].[Cities] 
+	AFTER DELETE
+AS 
+BEGIN
+
+	SET NOCOUNT ON;
+
+	DELETE FROM AdHocAttributeValues
+	WHERE TablePKId IN (SELECT CityId FROM deleted);
+
+END
+GO
+
+ALTER TABLE [dbo].[Cities] ENABLE TRIGGER [DELETECITYUDF]
+GO
+
+/****** Object:  Trigger [dbo].[DELETECOUNTRYUDF]    Script Date: 16-10-2019 21:24:59 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TRIGGER [dbo].[DELETECOUNTRYUDF]
+ON  [dbo].[Countries]
+	AFTER DELETE
+AS 
+BEGIN
+
+	SET NOCOUNT ON;
+
+	DELETE FROM AdHocAttributeValues
+	WHERE TablePKId IN (SELECT CountryId FROM deleted);
+
+END
+GO
+
+ALTER TABLE [dbo].[Countries] ENABLE TRIGGER [DELETECOUNTRYUDF]
+GO
+
+
+/****** Object:  Trigger [dbo].[DELETECUSTOMERCTCUDF]    Script Date: 16-10-2019 21:26:09 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TRIGGER [dbo].[DELETECUSTOMERCTCUDF]
+ON  [dbo].[CustomerContacts]
+	AFTER DELETE
+AS 
+BEGIN
+
+	SET NOCOUNT ON;
+
+	DELETE FROM AdHocAttributeValues
+	WHERE TablePKId IN (SELECT CContactId FROM deleted);
+
+END
+GO
+
+ALTER TABLE [dbo].[CustomerContacts] ENABLE TRIGGER [DELETECUSTOMERCTCUDF]
+GO
+
+/****** Object:  Trigger [dbo].[DELETECUSTOMERUDF]    Script Date: 16-10-2019 21:27:08 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TRIGGER [dbo].[DELETECUSTOMERUDF]
+ON  [dbo].[Customers]
+	AFTER DELETE
+AS 
+BEGIN
+
+	SET NOCOUNT ON;
+
+	DELETE FROM AdHocAttributeValues
+	WHERE TablePKId IN (SELECT CustomerId FROM deleted);
+
+END
+GO
+
+ALTER TABLE [dbo].[Customers] ENABLE TRIGGER [DELETECUSTOMERUDF]
+GO
+
+
+/****** Object:  Trigger [dbo].[DELETEGROUPUDF]    Script Date: 16-10-2019 21:28:13 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TRIGGER [dbo].[DELETEGROUPUDF]
+ON  [dbo].[Groups]
+	AFTER DELETE
+AS 
+BEGIN
+
+	SET NOCOUNT ON;
+
+	DELETE FROM AdHocAttributeValues
+	WHERE TablePKId IN (SELECT GroupId FROM deleted)
+
+END
+GO
+
+ALTER TABLE [dbo].[Groups] ENABLE TRIGGER [DELETEGROUPUDF]
+GO
+
+/****** Object:  Trigger [dbo].[DELETELANGMASTERUDF]    Script Date: 16-10-2019 21:51:05 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TRIGGER [dbo].[DELETELANGMASTERUDF] 
+   ON  [dbo].[LanguageMaster] 
+   AFTER DELETE
+AS 
+BEGIN
+
+	SET NOCOUNT ON;
+
+	DELETE FROM AdHocAttributeValues
+	WHERE TablePKId IN (SELECT Id FROM deleted);
+	
+END
+GO
+
+ALTER TABLE [dbo].[LanguageMaster] ENABLE TRIGGER [DELETELANGMASTERUDF]
+GO
+
+/****** Object:  Trigger [dbo].[DELETELANGUDF]    Script Date: 16-10-2019 21:51:31 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TRIGGER [dbo].[DELETELANGUDF] 
+   ON  [dbo].[Languages]
+   AFTER DELETE
+AS 
+BEGIN
+
+	SET NOCOUNT ON;
+
+	DELETE FROM AdHocAttributeValues
+	WHERE TablePKId IN (SELECT LanguageId FROM deleted);
+
+END
+GO
+
+ALTER TABLE [dbo].[Languages] ENABLE TRIGGER [DELETELANGUDF]
+GO
+
+/****** Object:  Trigger [dbo].[DELETEORGSTRUCTUDF]    Script Date: 16-10-2019 21:52:20 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE TRIGGER [dbo].[DELETEORGSTRUCTUDF] 
+   ON  [dbo].[OrgStructure]
+   AFTER DELETE
+AS 
+BEGIN
+
+	SET NOCOUNT ON;
+
+	DELETE FROM AdHocAttributeValues
+	WHERE TablePKId IN (SELECT OrgStructureId FROM deleted);
+
+END
+GO
+
+ALTER TABLE [dbo].[OrgStructure] ENABLE TRIGGER [DELETEORGSTRUCTUDF]
+GO
+
+/****** Object:  Trigger [dbo].[DELETEORGLEVELUDF]    Script Date: 16-10-2019 21:52:44 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE TRIGGER [dbo].[DELETEORGLEVELUDF] 
+   ON  [dbo].[OrgStructureLevel]
+   AFTER DELETE
+AS 
+BEGIN
+
+	SET NOCOUNT ON;
+
+	DELETE FROM AdHocAttributeValues
+	WHERE TablePKId IN (SELECT OrgStructureLevelId FROM deleted);
+
+END
+GO
+
+ALTER TABLE [dbo].[OrgStructureLevel] ENABLE TRIGGER [DELETEORGLEVELUDF]
+GO
+
+/****** Object:  Trigger [dbo].[DELETEPROJECTUDF]    Script Date: 16-10-2019 21:53:11 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE TRIGGER [dbo].[DELETEPROJECTUDF] 
+   ON  [dbo].[Projects]
+   AFTER DELETE
+AS 
+BEGIN
+
+	SET NOCOUNT ON;
+
+	DELETE FROM AdHocAttributeValues
+	WHERE TablePKId IN (SELECT ProjectId FROM deleted);
+
+END
+GO
+
+ALTER TABLE [dbo].[Projects] ENABLE TRIGGER [DELETEPROJECTUDF]
+GO
+
+/****** Object:  Trigger [dbo].[DELETESALESPERSONUDF]    Script Date: 16-10-2019 21:53:44 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TRIGGER [dbo].[DELETESALESPERSONUDF]
+   ON  [dbo].[SalesPerson]
+   AFTER DELETE
+AS 
+BEGIN
+
+	SET NOCOUNT ON;
+
+	DELETE FROM AdHocAttributeValues
+	WHERE TablePKId IN (SELECT SalesPersonId FROM deleted);
+
+END
+GO
+
+ALTER TABLE [dbo].[SalesPerson] ENABLE TRIGGER [DELETESALESPERSONUDF]
+GO
+
+/****** Object:  Trigger [dbo].[DELETESTATEUDF]    Script Date: 16-10-2019 21:54:18 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TRIGGER [dbo].[DELETESTATEUDF]
+   ON  [dbo].[States]
+   AFTER DELETE
+AS 
+BEGIN
+
+	SET NOCOUNT ON;
+
+	DELETE FROM AdHocAttributeValues
+	WHERE TablePKId IN (SELECT StateId FROM deleted);
+
+END
+GO
+
+ALTER TABLE [dbo].[States] ENABLE TRIGGER [DELETESTATEUDF]
+GO
+
+/****** Object:  Trigger [dbo].[DELETEUSERUDF]    Script Date: 16-10-2019 21:54:44 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE TRIGGER [dbo].[DELETEUSERUDF] 
+   ON  [dbo].[Users]
+   AFTER DELETE
+AS 
+BEGIN
+
+	SET NOCOUNT ON;
+
+	DELETE FROM AdHocAttributeValues
+	WHERE TablePKId IN (SELECT UserId FROM deleted);
+
+END
+GO
+
+ALTER TABLE [dbo].[Users] ENABLE TRIGGER [DELETEUSERUDF]
+GO
+
+
+/****** Object:  Trigger [dbo].[DELETEZIPCODEUDF]    Script Date: 16-10-2019 21:55:06 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE TRIGGER [dbo].[DELETEZIPCODEUDF]
+   ON  [dbo].[Zipcodes]
+   AFTER DELETE
+AS 
+BEGIN
+
+	SET NOCOUNT ON;
+
+	DELETE FROM AdHocAttributeValues
+	WHERE TablePKId IN (SELECT ZipcodeId FROM deleted);
+
+END
+GO
+
+ALTER TABLE [dbo].[Zipcodes] ENABLE TRIGGER [DELETEZIPCODEUDF]
+GO
+
+
