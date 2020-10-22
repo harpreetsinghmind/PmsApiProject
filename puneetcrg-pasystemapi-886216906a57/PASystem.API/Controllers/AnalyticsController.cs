@@ -299,13 +299,77 @@ namespace PASystem.API.Controllers
             }
         }
 
+        [HttpGet]
+        public HttpResponseMessage getchangerequest()
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = _arepo.getchangerequest();
+                    return Request.CreateResponse(HttpStatusCode.OK, new { success = true, data = result });
+                }
+                else return Request.CreateErrorResponse(HttpStatusCode.NotFound, string.Join(", ", ModelState.Values.SelectMany(v => v.Errors)));
+            }
+            catch (Exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Some error occured in current request.");
+            }
+        }
+        [HttpGet]
+        public HttpResponseMessage getresourceeffciency()
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = _arepo.getresourceeffciency();
+                    return Request.CreateResponse(HttpStatusCode.OK, new { success = true, data = result });
+                }
+                else return Request.CreateErrorResponse(HttpStatusCode.NotFound, string.Join(", ", ModelState.Values.SelectMany(v => v.Errors)));
+            }
+            catch (Exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Some error occured in current request.");
+            }
+        }
 
+        [HttpGet]
+        public HttpResponseMessage getresourceutilization()
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = _arepo.getresourceutilization();
+                    return Request.CreateResponse(HttpStatusCode.OK, new { success = true, data = result });
+                }
+                else return Request.CreateErrorResponse(HttpStatusCode.NotFound, string.Join(", ", ModelState.Values.SelectMany(v => v.Errors)));
+            }
+            catch (Exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Some error occured in current request.");
+            }
+        }
+        [HttpGet]
+        public HttpResponseMessage getrollback()
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = _arepo.getrollback();
+                    return Request.CreateResponse(HttpStatusCode.OK, new { success = true, data = result });
+                }
+                else return Request.CreateErrorResponse(HttpStatusCode.NotFound, string.Join(", ", ModelState.Values.SelectMany(v => v.Errors)));
+            }
+            catch (Exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Some error occured in current request.");
+            }
+        }
 
-
-
-
-
-
+        
 
 
 

@@ -418,6 +418,64 @@ namespace PASystem.API.Repositories
             }
 
         }
+        public DataSet getchangerequest()
+        {
+
+            try
+            {
+                SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[changerequest]", ConfigManager.GetNewSqlConnection);
+                return sp.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+        public DataSet getresourceeffciency()
+        {
+
+            try
+            {
+                SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[resourceeffciency]", ConfigManager.GetNewSqlConnection);
+                return sp.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+        public DataSet getresourceutilization()
+        {
+
+            try
+            {
+                SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[resourceutilization]", ConfigManager.GetNewSqlConnection);
+                return sp.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+        public DataSet getrollback()
+        {
+
+            try
+            {
+                SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[getrollback]", ConfigManager.GetNewSqlConnection);
+                return sp.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+
         
+
     }
 }
