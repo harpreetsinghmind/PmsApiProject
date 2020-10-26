@@ -369,7 +369,23 @@ namespace PASystem.API.Controllers
             }
         }
 
-        
+        [HttpGet]
+        public HttpResponseMessage getprojectdashboard(long projectid)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = _arepo.getprojectdashboard(projectid);
+                    return Request.CreateResponse(HttpStatusCode.OK, new { success = true, message = "Records Loaded Successfully", responseData = result });
+                }
+                else return Request.CreateErrorResponse(HttpStatusCode.NotFound, string.Join(", ", ModelState.Values.SelectMany(v => v.Errors)));
+            }
+            catch (Exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Some error occured in current request.");
+            }
+        }
 
 
 
