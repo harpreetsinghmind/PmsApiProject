@@ -22,7 +22,7 @@ using HttpPostAttribute = System.Web.Http.HttpPostAttribute;
 
 namespace PASystem.API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class AnalyticsController : ApiController
     {
         private AuthRepository _arepo = null;
@@ -370,6 +370,7 @@ namespace PASystem.API.Controllers
         }
 
         [HttpGet]
+        [System.Web.Http.Route("api/analytics/getprojectdashboard/{projectid}")]
         public HttpResponseMessage getprojectdashboard(long projectid)
         {
             try
@@ -386,10 +387,43 @@ namespace PASystem.API.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Some error occured in current request.");
             }
         }
+        [HttpGet]
+        [System.Web.Http.Route("api/analytics/getexpense/{userid}")]
+        public HttpResponseMessage getexpense(long userid)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = _arepo.getexpense(userid);
+                    return Request.CreateResponse(HttpStatusCode.OK, new { success = true, message = "Records Loaded Successfully", responseData = result });
+                }
+                else return Request.CreateErrorResponse(HttpStatusCode.NotFound, string.Join(", ", ModelState.Values.SelectMany(v => v.Errors)));
+            }
+            catch (Exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Some error occured in current request.");
+            }
+        }
+        [HttpGet]
+        public HttpResponseMessage getwbsandcbs()
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = _arepo.getwbsandcbs();
+                    return Request.CreateResponse(HttpStatusCode.OK, new { success = true, message = "Records Loaded Successfully", data = result });
+                }
+                else return Request.CreateErrorResponse(HttpStatusCode.NotFound, string.Join(", ", ModelState.Values.SelectMany(v => v.Errors)));
+            }
+            catch (Exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Some error occured in current request.");
+            }
+        }
 
-
-
-
+        
 
     }
 }

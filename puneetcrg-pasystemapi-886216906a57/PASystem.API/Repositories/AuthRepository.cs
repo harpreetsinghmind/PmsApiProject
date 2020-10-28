@@ -474,6 +474,20 @@ namespace PASystem.API.Repositories
             }
 
         }
+        public DataSet getwbsandcbs()
+        {
+
+            try
+            {
+                SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[getwbsandcbs]", ConfigManager.GetNewSqlConnection);
+                return sp.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
         public object getprojectdashboard(long projectid)
         {
             responseData objData = new responseData();
@@ -488,7 +502,8 @@ namespace PASystem.API.Repositories
                         DataTable dt1 = new DataTable();
                         DataTable dt2 = new DataTable();
                         DataTable dt3 = new DataTable();
-                        List<teamall> Teams = new List<teamall>();
+                        List<teamall> Team = new List<teamall>();
+                        List<teamall> Team2 = new List<teamall>();
                         teamall t = new teamall();
                         billableall billable = new billableall();
                         costbreakdownall costbreakdown = new costbreakdownall();
@@ -511,21 +526,30 @@ namespace PASystem.API.Repositories
                             dt2 = ds.Tables[2];
                             dt3 = ds.Tables[3];
                         }
-                        for (int i = 0; i < dt1.Rows.Count; i++)
+                        int teamcount = dt1.Rows.Count > 5 ? 5 : dt1.Rows.Count;
+                        for (int i = 0; i < teamcount; i++)
                         {
+
                             t.name = Convert.ToString(dt1.Rows[i]["name"]);
                             t.occupied = Convert.ToString(dt1.Rows[i]["occupied"]);
-                            Teams.Add(t);
+                            Team.Add(t);
+                        }
+                        for (int i = teamcount + 1; i < dt1.Rows.Count; i++)
+                        {
+
+                            t.name = Convert.ToString(dt1.Rows[i]["name"]);
+                            t.occupied = Convert.ToString(dt1.Rows[i]["occupied"]);
+                            Team2.Add(t);
                         }
                         if (dt2.Rows.Count > 0)
                         {
-                            billable.billedhours = Convert.ToString(dt2.Rows[0]["billedhours"]);
-                            billable.nonbilledhours = Convert.ToString(dt2.Rows[0]["nonbilledhours"]);
+                            billable.billedhours = Convert.ToString(dt2.Rows[0]["Billablehours"]);
+                            billable.nonbilledhours = Convert.ToString(dt2.Rows[0]["nonbillablehours"]);
                         }
                         if (dt3.Rows.Count > 0)
                         {
-                            costbreakdown.budget = Convert.ToString(dt3.Rows[0]["budget"]);
-                            costbreakdown.actual = Convert.ToString(dt3.Rows[0]["actual"]);
+                            costbreakdown.budget = Convert.ToString(dt3.Rows[0]["Budgetcot"]);
+                            costbreakdown.actual = Convert.ToString(dt3.Rows[0]["Actualcost"]);
                         }
                         if (dt.Rows.Count > 0)
                         {
@@ -579,10 +603,102 @@ namespace PASystem.API.Repositories
                             objData.roadbockbyserviceinprogress1 = dt.Rows[0]["roadbockbyserviceinprogress1"] == null ? "" : Convert.ToString(dt.Rows[0]["roadbockbyserviceinprogress1"]);
                             objData.roadbockbyservicenotclosed1 = dt.Rows[0]["roadbockbyservicenotclosed1"] == null ? "" : Convert.ToString(dt.Rows[0]["roadbockbyservicenotclosed1"]);
                             objData.avgtimebyservice = dt.Rows[0]["avgtimebyservice"] == null ? "" : Convert.ToString(dt.Rows[0]["avgtimebyservice"]);
-                            objData.Teams = Teams;
+                            objData.Team = Team;
+                            objData.Team2 = Team2;
                             objData.billable = billable;
                             objData.healthcard = healthcard;
                             objData.costbreakdown = costbreakdown;
+                        }
+                        return objData;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+
+        public object getexpense(long userid)
+        {
+            expense objData = new expense();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConfigManager.GetNewSqlConnection.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        DataSet ds = new DataSet();
+                        DataTable dt = new DataTable();
+                        DataTable dt1 = new DataTable();
+                        DataTable dt2 = new DataTable();
+                        DataTable dt3 = new DataTable();
+                        List<exoansechart> exoansechart = new List<exoansechart>();
+                        List<Report> Report = new List<Report>();
+                        exoansechart t;
+                        Report r ;
+                        cmd.CommandText = "getexpense";
+                        cmd.Connection = conn;
+                        cmd.Parameters.AddWithValue("@userid", userid);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        conn.Open();
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        adapter.Fill(ds);
+                        if (ds.Tables.Count > 0)
+                        {
+                            dt = ds.Tables[0];
+                            dt1 = ds.Tables[1];
+                            dt2 = ds.Tables[2];
+                            dt3 = ds.Tables[3];
+                        }
+                        string piechart = "[";
+                        for (int i = 0; i < dt1.Rows.Count; i++)
+                        {
+                            piechart = piechart + "{";
+                            if (i < dt1.Rows.Count-1)
+                                piechart = piechart + ("\""+ dt1.Rows[i]["CategoryName"].ToString() + "\":") + dt1.Rows[i]["Total"].ToString() + "},";
+                            else
+                                piechart = piechart + ("\"" + dt1.Rows[i]["CategoryName"].ToString() + "\":") + dt1.Rows[i]["Total"].ToString() + "}";
+                        }
+                        piechart = piechart + "]";
+                        for (int i = 0; i < dt2.Rows.Count; i++)
+                        {
+                            t = new exoansechart();
+                            t.month = Convert.ToString(dt2.Rows[i]["month"]);
+                            t.submitted = Convert.ToString(dt2.Rows[i]["submitted"]);
+                            t.approved = Convert.ToInt64(dt2.Rows[i]["approved"]);
+                            exoansechart.Add(t);
+                        }
+                        for (int i = 0; i < dt3.Rows.Count; i++)
+                        {
+                            r = new Report();
+                            r.monthyear = Convert.ToString(dt3.Rows[i]["month"]);
+                            r.reportname = Convert.ToString(dt3.Rows[i]["reportTitle"]);
+                            r.Amount = Convert.ToString(dt3.Rows[i]["Amount"]);
+                            r.status = Convert.ToString(dt3.Rows[i]["status"]);
+                            Report.Add(r);
+                        }
+                        if (dt.Rows.Count > 0)
+                        {
+                            objData.TotalExNo = Convert.ToString(dt.Rows[0]["TotalExNo"]);
+                            objData.TotalExAmount = Convert.ToString(dt.Rows[0]["TotalExAmount"]);
+                            objData.ReimNo = dt.Rows[0]["ReimNo"] == null ? "0" : Convert.ToString(dt.Rows[0]["ReimNo"]);
+                            objData.Reimamount = Convert.ToString(dt.Rows[0]["Reimamount"]);
+                            objData.NoofCustomer = dt.Rows[0]["NoofCustomer"] == null ? "0" : Convert.ToString(dt.Rows[0]["NoofCustomer"]);
+                            objData.NoofProject = dt.Rows[0]["NoofProject"] == null ? "0" : Convert.ToString(dt.Rows[0]["NoofProject"]);
+                            objData.Internalex = dt.Rows[0]["Internalex"] == null ? "0" : Convert.ToString(dt.Rows[0]["Internalex"]);
+                            objData.Externalex = dt.Rows[0]["Externalex"] == null ? "" : Convert.ToString(dt.Rows[0]["Externalex"]);
+                            objData.Approvependingno = dt.Rows[0]["Approvependingno"] == null ? "0" : Convert.ToString(dt.Rows[0]["Approvependingno"]);
+                            objData.Approvependingamount = dt.Rows[0]["Approvependingamount"] == null ? "0" : Convert.ToString(dt.Rows[0]["Approvependingamount"]);
+                            objData.unsumbitno = dt.Rows[0]["unsumbitno"] == null ? "0" : Convert.ToString(dt.Rows[0]["unsumbitno"]);
+                            objData.unsubmitamount = dt.Rows[0]["unsubmitamount"] == null ? "0" : Convert.ToString(dt.Rows[0]["unsubmitamount"]);
+                            objData.rejectedno = dt.Rows[0]["rejectedno"] == null ? "" : Convert.ToString(dt.Rows[0]["rejectedno"]);
+                            objData.rejectamount = dt.Rows[0]["rejectamount"] == null ? "0" : Convert.ToString(dt.Rows[0]["rejectamount"]);
+                            objData.piechart = piechart;
+                            objData.exoansechart = exoansechart;
+                            objData.Report = Report;
                         }
                         return objData;
                     }
@@ -646,7 +762,8 @@ namespace PASystem.API.Repositories
             public string roadbockbyserviceinprogress1 { get; set; }
             public string roadbockbyservicenotclosed1 { get; set; }
             public string avgtimebyservice { get; set; }
-            public List<teamall> Teams { get; set; }
+            public List<teamall> Team { get; set; }
+            public List<teamall> Team2 { get; set; }
             public billableall billable { get; set; }
             public healthcardall healthcard { get; set; }
             public costbreakdownall costbreakdown { get; set; }
@@ -672,6 +789,41 @@ namespace PASystem.API.Repositories
         {
             public string budget { get; set; }
             public string actual { get; set; }
+        }
+
+        public class expense
+        {
+            public string TotalExNo { get; set; }
+            public string TotalExAmount { get; set; }
+            public string ReimNo { get; set; }
+            public string Reimamount { get; set; }
+            public string NoofCustomer { get; set; }
+            public string NoofProject { get; set; }
+            public string Internalex { get; set; }
+            public string Externalex { get; set; }
+            public string Approvependingno { get; set; }
+            public string Approvependingamount { get; set; }
+            public string unsumbitno { get; set; }
+            public string unsubmitamount { get; set; }
+            public string rejectedno { get; set; }
+            public string rejectamount { get; set; }
+            public object piechart { get; set; }
+            public List<exoansechart> exoansechart { get; set; }
+            public List<Report> Report { get; set; }
+
+        }
+        public class exoansechart
+        {
+            public string month { get; set; }
+            public string submitted { get; set; }
+            public Int64 approved { get; set; }
+        }
+        public class Report
+        {
+            public string monthyear { get; set; }
+            public string reportname { get; set; }
+            public string Amount { get; set; }
+            public string status { get; set; }
         }
     }
 }

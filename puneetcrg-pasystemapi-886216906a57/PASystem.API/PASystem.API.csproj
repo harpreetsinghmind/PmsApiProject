@@ -373,7 +373,6 @@
     <Compile Include="DataAccessLayer\DALExceptions.cs" />
     <Compile Include="DataAccessLayer\SqlStoredProcedure.cs" />
     <Compile Include="Email\EmailNotificationModel.cs" />
-    <Compile Include="Email\EmailSender.cs" />
     <Compile Include="Entity\ApplicationUser.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -454,7 +453,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55160</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
