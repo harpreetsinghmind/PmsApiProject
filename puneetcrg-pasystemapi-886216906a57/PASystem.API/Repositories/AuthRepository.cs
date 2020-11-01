@@ -197,12 +197,17 @@ namespace PASystem.API.Repositories
 
         //-----------------------Analytics
 
-        public DataSet Getexpansedetail()
+        public DataSet Getexpansedetail(long UserId, long customerid, int reportid, DateTime fromdate, DateTime todate)
         {
 
             try
             {
                 SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[exGetexpansedetail]", ConfigManager.GetNewSqlConnection);
+                sp.AddParameterWithValue("@UserId", SqlDbType.BigInt, 0, ParameterDirection.Input, UserId);
+                sp.AddParameterWithValue("@Customerid", SqlDbType.BigInt, 0, ParameterDirection.Input, customerid);
+                sp.AddParameterWithValue("@Reportid", SqlDbType.Int, 0, ParameterDirection.Input, reportid);
+                sp.AddParameterWithValue("@Fromdate", SqlDbType.DateTime, 0, ParameterDirection.Input, fromdate);
+                sp.AddParameterWithValue("@Todate", SqlDbType.DateTime, 0, ParameterDirection.Input, todate);
                 return sp.ExecuteDataSet();
             }
             catch (Exception ex)
@@ -212,12 +217,17 @@ namespace PASystem.API.Repositories
 
         }
 
-        public DataSet Getunsubmittedexpanse()
+        public DataSet Getunsubmittedexpanse(long UserId, long customerid, int reportid, DateTime fromdate, DateTime todate)
         {
 
             try
             {
                 SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[exGetunsubmittedexpanse]", ConfigManager.GetNewSqlConnection);
+                sp.AddParameterWithValue("@UserId", SqlDbType.BigInt, 0, ParameterDirection.Input, UserId);
+                sp.AddParameterWithValue("@Customerid", SqlDbType.BigInt, 0, ParameterDirection.Input, customerid);
+                sp.AddParameterWithValue("@Reportid", SqlDbType.Int, 0, ParameterDirection.Input, reportid);
+                sp.AddParameterWithValue("@Fromdate", SqlDbType.DateTime, 0, ParameterDirection.Input, fromdate);
+                sp.AddParameterWithValue("@Todate", SqlDbType.DateTime, 0, ParameterDirection.Input, todate);
                 return sp.ExecuteDataSet();
             }
             catch (Exception ex)
@@ -227,12 +237,17 @@ namespace PASystem.API.Repositories
 
         }
 
-        public DataSet Getcategoryexpanse()
+        public DataSet Getcategoryexpanse(long UserId, long customerid, int reportid, DateTime fromdate, DateTime todate)
         {
 
             try
             {
                 SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[exGetcategoryexpanse]", ConfigManager.GetNewSqlConnection);
+                sp.AddParameterWithValue("@UserId", SqlDbType.BigInt, 0, ParameterDirection.Input, UserId);
+                sp.AddParameterWithValue("@Customerid", SqlDbType.BigInt, 0, ParameterDirection.Input, customerid);
+                sp.AddParameterWithValue("@Reportid", SqlDbType.Int, 0, ParameterDirection.Input, reportid);
+                sp.AddParameterWithValue("@Fromdate", SqlDbType.DateTime, 0, ParameterDirection.Input, fromdate);
+                sp.AddParameterWithValue("@Todate", SqlDbType.DateTime, 0, ParameterDirection.Input, todate);
                 return sp.ExecuteDataSet();
             }
             catch (Exception ex)
@@ -243,12 +258,17 @@ namespace PASystem.API.Repositories
         }
 
 
-        public DataSet getuserwiseexpanse()
+        public DataSet getuserwiseexpanse(long UserId, long customerid, int reportid, DateTime fromdate, DateTime todate)
         {
 
             try
             {
                 SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[exgetuserwiseexpanse]", ConfigManager.GetNewSqlConnection);
+                sp.AddParameterWithValue("@UserId", SqlDbType.BigInt, 0, ParameterDirection.Input, UserId);
+                sp.AddParameterWithValue("@Customerid", SqlDbType.BigInt, 0, ParameterDirection.Input, customerid);
+                sp.AddParameterWithValue("@Reportid", SqlDbType.Int, 0, ParameterDirection.Input, reportid);
+                sp.AddParameterWithValue("@Fromdate", SqlDbType.DateTime, 0, ParameterDirection.Input, fromdate);
+                sp.AddParameterWithValue("@Todate", SqlDbType.DateTime, 0, ParameterDirection.Input, todate);
                 return sp.ExecuteDataSet();
             }
             catch (Exception ex)
@@ -258,12 +278,17 @@ namespace PASystem.API.Repositories
 
         }
 
-        public DataSet getmilegeexpanse()
+        public DataSet getmilegeexpanse(long UserId, long customerid, int reportid, DateTime fromdate, DateTime todate)
         {
 
             try
             {
                 SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[exgetmilegeexpanse]", ConfigManager.GetNewSqlConnection);
+                sp.AddParameterWithValue("@UserId", SqlDbType.BigInt, 0, ParameterDirection.Input, UserId);
+                sp.AddParameterWithValue("@Customerid", SqlDbType.BigInt, 0, ParameterDirection.Input, customerid);
+                sp.AddParameterWithValue("@Reportid", SqlDbType.Int, 0, ParameterDirection.Input, reportid);
+                sp.AddParameterWithValue("@Fromdate", SqlDbType.DateTime, 0, ParameterDirection.Input, fromdate);
+                sp.AddParameterWithValue("@Todate", SqlDbType.DateTime, 0, ParameterDirection.Input, todate);
                 return sp.ExecuteDataSet();
             }
             catch (Exception ex)
@@ -273,12 +298,17 @@ namespace PASystem.API.Repositories
 
         }
 
-        public DataSet getpolicyviolation()
+        public DataSet getpolicyviolation(long UserId, long customerid, int reportid, DateTime fromdate, DateTime todate)
         {
 
             try
             {
                 SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[exgetpolicyviolation]", ConfigManager.GetNewSqlConnection);
+                sp.AddParameterWithValue("@UserId", SqlDbType.BigInt, 0, ParameterDirection.Input, UserId);
+                sp.AddParameterWithValue("@Customerid", SqlDbType.BigInt, 0, ParameterDirection.Input, customerid);
+                sp.AddParameterWithValue("@Reportid", SqlDbType.Int, 0, ParameterDirection.Input, reportid);
+                sp.AddParameterWithValue("@Fromdate", SqlDbType.DateTime, 0, ParameterDirection.Input, fromdate);
+                sp.AddParameterWithValue("@Todate", SqlDbType.DateTime, 0, ParameterDirection.Input, todate);
                 return sp.ExecuteDataSet();
             }
             catch (Exception ex)
@@ -290,12 +320,17 @@ namespace PASystem.API.Repositories
 
 
 
-        public DataSet getcustomerexpanse()
+        public DataSet getcustomerexpanse(long UserId, long customerid, int reportid, DateTime fromdate, DateTime todate)
         {
 
             try
             {
                 SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[exgetcustomerexpanse]", ConfigManager.GetNewSqlConnection);
+                sp.AddParameterWithValue("@UserId", SqlDbType.BigInt, 0, ParameterDirection.Input, UserId);
+                sp.AddParameterWithValue("@Customerid", SqlDbType.BigInt, 0, ParameterDirection.Input, customerid);
+                sp.AddParameterWithValue("@Reportid", SqlDbType.Int, 0, ParameterDirection.Input, reportid);
+                sp.AddParameterWithValue("@Fromdate", SqlDbType.DateTime, 0, ParameterDirection.Input, fromdate);
+                sp.AddParameterWithValue("@Todate", SqlDbType.DateTime, 0, ParameterDirection.Input, todate);
                 return sp.ExecuteDataSet();
             }
             catch (Exception ex)
@@ -320,12 +355,17 @@ namespace PASystem.API.Repositories
             }
 
         }
-        public DataSet getexrptresourceallocation()
+        public DataSet getexrptresourceallocation(long UserId, long ProjectId, long customerid, DateTime fromdate, DateTime todate)
         {
 
             try
             {
                 SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[exrptresourceallocation]", ConfigManager.GetNewSqlConnection);
+                sp.AddParameterWithValue("@UserId", SqlDbType.BigInt, 0, ParameterDirection.Input, UserId);
+                sp.AddParameterWithValue("@ProjectId", SqlDbType.BigInt, 0, ParameterDirection.Input, ProjectId);
+                sp.AddParameterWithValue("@Customerid", SqlDbType.BigInt, 0, ParameterDirection.Input, customerid);
+                sp.AddParameterWithValue("@Fromdate", SqlDbType.DateTime, 0, ParameterDirection.Input, fromdate);
+                sp.AddParameterWithValue("@Todate", SqlDbType.DateTime, 0, ParameterDirection.Input, todate);
                 return sp.ExecuteDataSet();
             }
             catch (Exception ex)
@@ -334,12 +374,17 @@ namespace PASystem.API.Repositories
             }
 
         }
-        public DataSet getprojectleaveplannerreport()
+        public DataSet getprojectleaveplannerreport(long UserId, long ProjectId, long customerid, DateTime fromdate, DateTime todate)
         {
 
             try
             {
                 SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[projectleaveplannerreport]", ConfigManager.GetNewSqlConnection);
+                sp.AddParameterWithValue("@UserId", SqlDbType.BigInt, 0, ParameterDirection.Input, UserId);
+                sp.AddParameterWithValue("@ProjectId", SqlDbType.BigInt, 0, ParameterDirection.Input, ProjectId);
+                sp.AddParameterWithValue("@Customerid", SqlDbType.BigInt, 0, ParameterDirection.Input, customerid);
+                sp.AddParameterWithValue("@Fromdate", SqlDbType.DateTime, 0, ParameterDirection.Input, fromdate);
+                sp.AddParameterWithValue("@Todate", SqlDbType.DateTime, 0, ParameterDirection.Input, todate);
                 return sp.ExecuteDataSet();
             }
             catch (Exception ex)
@@ -348,12 +393,16 @@ namespace PASystem.API.Repositories
             }
 
         }
-        public DataSet getoverduetask()
+        public DataSet getoverduetask(long UserId, long ProjectId, DateTime fromdate, DateTime todate)
         {
 
             try
             {
                 SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[overduetask]", ConfigManager.GetNewSqlConnection);
+                sp.AddParameterWithValue("@UserId", SqlDbType.BigInt, 0, ParameterDirection.Input, UserId);
+                sp.AddParameterWithValue("@ProjectId", SqlDbType.BigInt, 0, ParameterDirection.Input, ProjectId);
+                sp.AddParameterWithValue("@Fromdate", SqlDbType.DateTime, 0, ParameterDirection.Input, fromdate);
+                sp.AddParameterWithValue("@Todate", SqlDbType.DateTime, 0, ParameterDirection.Input, todate);
                 return sp.ExecuteDataSet();
             }
             catch (Exception ex)
@@ -362,12 +411,17 @@ namespace PASystem.API.Repositories
             }
 
         }
-        public DataSet getplannedvsactual()
+        public DataSet getplannedvsactual(long UserId, long customerid, DateTime fromdate, DateTime todate, int status)
         {
 
             try
             {
                 SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[plannedvsactual]", ConfigManager.GetNewSqlConnection);
+                sp.AddParameterWithValue("@UserId", SqlDbType.BigInt, 0, ParameterDirection.Input, UserId);
+                sp.AddParameterWithValue("@CustomerId", SqlDbType.BigInt, 0, ParameterDirection.Input, customerid);
+                sp.AddParameterWithValue("@Fromdate", SqlDbType.DateTime, 0, ParameterDirection.Input, fromdate);
+                sp.AddParameterWithValue("@Todate", SqlDbType.DateTime, 0, ParameterDirection.Input, todate);
+                sp.AddParameterWithValue("@Status", SqlDbType.DateTime, 0, ParameterDirection.Input, status);
                 return sp.ExecuteDataSet();
             }
             catch (Exception ex)
@@ -376,12 +430,17 @@ namespace PASystem.API.Repositories
             }
 
         }
-        public DataSet getexrptresourceworkdetail()
+        public DataSet getexrptresourceworkdetail(long UserId, long ProjectId, long employeeid, DateTime fromdate, DateTime todate)
         {
 
             try
             {
                 SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[exrptresourceworkdetail]", ConfigManager.GetNewSqlConnection);
+                sp.AddParameterWithValue("@UserId", SqlDbType.BigInt, 0, ParameterDirection.Input, UserId);
+                sp.AddParameterWithValue("@ProjectId", SqlDbType.BigInt, 0, ParameterDirection.Input, ProjectId);
+                sp.AddParameterWithValue("@Employeeid", SqlDbType.BigInt, 0, ParameterDirection.Input, employeeid);
+                sp.AddParameterWithValue("@Fromdate", SqlDbType.DateTime, 0, ParameterDirection.Input, fromdate);
+                sp.AddParameterWithValue("@Todate", SqlDbType.DateTime, 0, ParameterDirection.Input, todate);
                 return sp.ExecuteDataSet();
             }
             catch (Exception ex)
@@ -390,12 +449,16 @@ namespace PASystem.API.Repositories
             }
 
         }
-        public DataSet getprojectprofitablity()
+        public DataSet getprojectprofitablity(long Userid, long projectid, DateTime fromdate, DateTime todate)
         {
 
             try
             {
                 SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[projectprofitablity]", ConfigManager.GetNewSqlConnection);
+                sp.AddParameterWithValue("@UserId", SqlDbType.BigInt, 0, ParameterDirection.Input, Userid);
+                sp.AddParameterWithValue("@ProjectId", SqlDbType.BigInt, 0, ParameterDirection.Input, projectid);
+                sp.AddParameterWithValue("@Fromdate", SqlDbType.DateTime, 0, ParameterDirection.Input, fromdate);
+                sp.AddParameterWithValue("@Todate", SqlDbType.DateTime, 0, ParameterDirection.Input, todate);
                 return sp.ExecuteDataSet();
             }
             catch (Exception ex)
@@ -404,12 +467,16 @@ namespace PASystem.API.Repositories
             }
 
         }
-        public DataSet getmomreport()
+        public DataSet getmomreport(long Userid, long projectid, DateTime fromdate, DateTime todate)
         {
 
             try
             {
                 SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[momreport]", ConfigManager.GetNewSqlConnection);
+                sp.AddParameterWithValue("@UserId", SqlDbType.BigInt, 0, ParameterDirection.Input, Userid);
+                sp.AddParameterWithValue("@ProjectId", SqlDbType.BigInt, 0, ParameterDirection.Input, projectid);
+                sp.AddParameterWithValue("@Fromdate", SqlDbType.DateTime, 0, ParameterDirection.Input, fromdate);
+                sp.AddParameterWithValue("@Todate", SqlDbType.DateTime, 0, ParameterDirection.Input, todate);
                 return sp.ExecuteDataSet();
             }
             catch (Exception ex)
