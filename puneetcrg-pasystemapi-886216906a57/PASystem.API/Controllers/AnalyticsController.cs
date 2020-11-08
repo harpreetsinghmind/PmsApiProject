@@ -421,6 +421,24 @@ namespace PASystem.API.Controllers
             }
         }
         [HttpGet]
+        [System.Web.Http.Route("api/analytics/getroadblock")]
+        public HttpResponseMessage getroadblock()
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = _arepo.getroadblock();
+                    return Request.CreateResponse(HttpStatusCode.OK, new { success = true, message = "Records Loaded Successfully", responseData = result });
+                }
+                else return Request.CreateErrorResponse(HttpStatusCode.NotFound, string.Join(", ", ModelState.Values.SelectMany(v => v.Errors)));
+            }
+            catch (Exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Some error occured in current request.");
+            }
+        }
+        [HttpGet]
         public HttpResponseMessage getwbsandcbs()
         {
             try
@@ -428,6 +446,23 @@ namespace PASystem.API.Controllers
                 if (ModelState.IsValid)
                 {
                     var result = _arepo.getwbsandcbs();
+                    return Request.CreateResponse(HttpStatusCode.OK, new { success = true, message = "Records Loaded Successfully", data = result });
+                }
+                else return Request.CreateErrorResponse(HttpStatusCode.NotFound, string.Join(", ", ModelState.Values.SelectMany(v => v.Errors)));
+            }
+            catch (Exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Some error occured in current request.");
+            }
+        }
+        [HttpGet]
+        public HttpResponseMessage getprojectsummary()
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = _arepo.getprojectsummary(0);
                     return Request.CreateResponse(HttpStatusCode.OK, new { success = true, message = "Records Loaded Successfully", data = result });
                 }
                 else return Request.CreateErrorResponse(HttpStatusCode.NotFound, string.Join(", ", ModelState.Values.SelectMany(v => v.Errors)));

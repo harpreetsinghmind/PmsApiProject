@@ -555,6 +555,20 @@ namespace PASystem.API.Repositories
             }
 
         }
+        public DataSet getroadblock()
+        {
+
+            try
+            {
+                SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[getroadblock]", ConfigManager.GetNewSqlConnection);
+                return sp.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
         public object getprojectdashboard(long projectid)
         {
             responseData objData = new responseData();
@@ -704,7 +718,7 @@ namespace PASystem.API.Repositories
                         List<exoansechart> exoansechart = new List<exoansechart>();
                         List<Report> Report = new List<Report>();
                         exoansechart t;
-                        Report r ;
+                        Report r;
                         cmd.CommandText = "getexpense";
                         cmd.Connection = conn;
                         cmd.Parameters.AddWithValue("@userid", userid);
@@ -724,8 +738,8 @@ namespace PASystem.API.Repositories
                         for (int i = 0; i < dt1.Rows.Count; i++)
                         {
                             piechart = piechart + "{";
-                            if (i < dt1.Rows.Count-1)
-                                piechart = piechart + ("\""+ dt1.Rows[i]["CategoryName"].ToString() + "\":") + dt1.Rows[i]["Total"].ToString() + "},";
+                            if (i < dt1.Rows.Count - 1)
+                                piechart = piechart + ("\"" + dt1.Rows[i]["CategoryName"].ToString() + "\":") + dt1.Rows[i]["Total"].ToString() + "},";
                             else
                                 piechart = piechart + ("\"" + dt1.Rows[i]["CategoryName"].ToString() + "\":") + dt1.Rows[i]["Total"].ToString() + "}";
                         }
@@ -767,6 +781,103 @@ namespace PASystem.API.Repositories
                             objData.exoansechart = exoansechart;
                             objData.Report = Report;
                         }
+                        return objData;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+        public object getprojectsummary(long userid)
+        {
+            responseDataNew objData = new responseDataNew();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConfigManager.GetNewSqlConnection.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        DataSet ds = new DataSet();
+                        DataTable dt = new DataTable();
+                        DataTable dt1 = new DataTable();
+                        DataTable dt2 = new DataTable();
+                        DataTable dt3 = new DataTable();
+                        DataTable dt4 = new DataTable();
+                        projectsummary projectsummary = new projectsummary();
+                        List<projectsummary> responseData = new List<projectsummary>();
+                        List<taskdetail> Task = new List<taskdetail>();
+                        List<taskdetail> Issues = new List<taskdetail>();
+                        List<taskdetail> Tasktoday = new List<taskdetail>();
+                        List<Timesheet7> Timesheet7 = new List<Timesheet7>();
+                        Timesheet7 Timesheet = new Timesheet7();
+                        taskdetail tasks = new taskdetail();
+                        cmd.CommandText = "getprojectsummary";
+                        cmd.Connection = conn;
+                        cmd.Parameters.AddWithValue("@userid", userid);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        conn.Open();
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        adapter.Fill(ds);
+                        if (ds.Tables.Count > 0)
+                        {
+                            dt = ds.Tables[0];
+                            dt1 = ds.Tables[1];
+                            dt2 = ds.Tables[2];
+                            dt3 = ds.Tables[3];
+                            dt4 = ds.Tables[4];
+                        }
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+                            projectsummary.NoofProjects = Convert.ToString(dt.Rows[0]["noofprojects"]);
+                            projectsummary.Noofprojectscompleted = Convert.ToString(dt.Rows[0]["noofprojectscompleted"]);
+                            projectsummary.Nooftask = Convert.ToString(dt.Rows[0]["nooftask"]);
+                            projectsummary.Nooftaskcompleted = Convert.ToString(dt.Rows[0]["Nooftaskcompleted"]);
+                            projectsummary.Noofissues = Convert.ToString(dt.Rows[0]["Noofissues"]);
+                            projectsummary.Noofissuescompleted = Convert.ToString(dt.Rows[0]["Noofissuescompleted"]);
+                        }
+                        for (int i = 0; i < dt1.Rows.Count; i++)
+                        {
+                            tasks = new taskdetail();
+                            tasks.Phase = Convert.ToString(dt1.Rows[i]["Phase"]);
+                            tasks.Task = Convert.ToString(dt1.Rows[i]["Task"]);
+                            tasks.duedate = Convert.ToString(dt1.Rows[i]["duedate"]);
+                            Task.Add(tasks);
+                        }
+                        for (int i = 0; i < dt2.Rows.Count; i++)
+                        {
+                            tasks = new taskdetail();
+                            tasks.Phase = Convert.ToString(dt2.Rows[i]["Phase"]);
+                            tasks.Task = Convert.ToString(dt2.Rows[i]["Task"]);
+                            tasks.duedate = Convert.ToString(dt2.Rows[i]["duedate"]);
+                            Issues.Add(tasks);
+                        }
+                        for (int i = 0; i < dt3.Rows.Count; i++)
+                        {
+                            tasks = new taskdetail();
+                            tasks.Phase = Convert.ToString(dt3.Rows[i]["Phase"]);
+                            tasks.Task = Convert.ToString(dt3.Rows[i]["Task"]);
+                            tasks.duedate = Convert.ToString(dt3.Rows[i]["duedate"]);
+                            Tasktoday.Add(tasks);
+                        }
+                        for (int i = 0; i < dt4.Rows.Count; i++)
+                        {
+                            Timesheet = new Timesheet7();
+                            Timesheet.Date = Convert.ToString(dt4.Rows[i]["Date"]);
+                            Timesheet.Task = Convert.ToString(dt4.Rows[i]["Task"]);
+                            Timesheet.hours = Convert.ToString(dt4.Rows[i]["hours"]);
+                            Timesheet.status = Convert.ToString(dt4.Rows[i]["status"]);
+                            Timesheet.progress = Convert.ToString(dt4.Rows[i]["progress"]);
+                            Timesheet7.Add(Timesheet);
+                        }
+                        objData.responseData = projectsummary;
+                        objData.Task = Task;
+                        objData.Issues = Issues;
+                        objData.Tasktoday = Tasktoday;
+                        objData.Timesheet7 = Timesheet7;
                         return objData;
                     }
                 }
@@ -891,6 +1002,40 @@ namespace PASystem.API.Repositories
             public string reportname { get; set; }
             public string Amount { get; set; }
             public string status { get; set; }
+        }
+        public class responseDataNew
+        {
+            public projectsummary responseData = new projectsummary();
+            public List<taskdetail> Task { get; set; }
+            public List<taskdetail> Issues { get; set; }
+
+            public List<taskdetail> Tasktoday { get; set; }
+            public List<Timesheet7> Timesheet7 { get; set; }
+        }
+        public class projectsummary
+        {
+            public string NoofProjects { get; set; }
+            public string Noofprojectscompleted { get; set; }
+            public string Nooftask { get; set; }
+            public string Nooftaskcompleted { get; set; }
+            public string Noofissues { get; set; }
+            public string Noofissuescompleted { get; set; }
+
+
+        }
+        public class taskdetail
+        {
+            public string Phase { get; set; }
+            public string Task { get; set; }
+            public string duedate { get; set; }
+        }
+        public class Timesheet7
+        {
+            public string Date { get; set; }
+            public string Task { get; set; }
+            public string hours { get; set; }
+            public string status { get; set; }
+            public string progress { get; set; }
         }
     }
 }
