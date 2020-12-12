@@ -346,6 +346,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Upload\holiday.xlsx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -369,6 +370,7 @@
     <Compile Include="Common\Helpers.cs" />
     <Compile Include="Common\PasExceptionFilter.cs" />
     <Compile Include="Controllers\AnalyticsController.cs" />
+    <Compile Include="Controllers\ExcelController.cs" />
     <Compile Include="DataAccessLayer\ConfigManager.cs" />
     <Compile Include="DataAccessLayer\DALExceptions.cs" />
     <Compile Include="DataAccessLayer\SqlStoredProcedure.cs" />
@@ -395,6 +397,7 @@
     <Compile Include="Providers\GoogleAuthProvider.cs" />
     <Compile Include="Providers\OAuthProvider.cs" />
     <Compile Include="Providers\TokenProvider.cs" />
+    <Compile Include="Repositories\ExcelRepository.cs" />
     <Compile Include="Repositories\AuthRepository.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Services\EmailService.cs" />
@@ -418,6 +421,7 @@
     <Folder Include="Views\Accounts\" />
     <Folder Include="Views\Analytics\" />
     <Folder Include="Views\Claims\" />
+    <Folder Include="Views\Excel\" />
     <Folder Include="Views\Project\" />
     <Folder Include="Views\Roles\" />
   </ItemGroup>
