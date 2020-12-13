@@ -349,6 +349,11 @@
     <Content Include="Upload\holiday.xlsx" />
     <Content Include="Upload\advancepayment.xlsx" />
     <Content Include="Upload\ApprovalSheet.xlsx" />
+    <Content Include="Upload\category.xlsx" />
+    <Content Include="Upload\business.xlsx" />
+    <Content Include="Upload\sales.xlsx" />
+    <Content Include="Upload\customer.xlsx" />
+    <Content Include="Upload\projectphase.xlsx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
