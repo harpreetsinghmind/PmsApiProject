@@ -42,16 +42,47 @@ namespace PASystem.API.Repositories
         }
 
 
-        public Int64 saveholidays(string holiday,DateTime holidaydate,string holidayday,long cmpcode,string location)
+        public Int64 saveholidays(long cmpcode)
         {
             //var result = new IdentityResult();
             try
             {
                 SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[saveHoliday]", ConfigManager.GetNewSqlConnection);
-                sp.AddParameterWithValue("@HolidayName", SqlDbType.NVarChar, 256, ParameterDirection.Input, holiday);
-                sp.AddParameterWithValue("@HolidayDate", SqlDbType.Date, 50, ParameterDirection.Input, holidaydate);
                 sp.AddParameterWithValue("@CmpCode", SqlDbType.BigInt, 0, ParameterDirection.Input, cmpcode);
-                sp.AddParameterWithValue("@Locations", SqlDbType.NVarChar, 50, ParameterDirection.Input, location);
+                return Convert.ToInt32(sp.ExecuteScalar());
+
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+
+            //return result;
+        }
+        public Int64 saveAdvancePayment(long cmpcode)
+        {
+            //var result = new IdentityResult();
+            try
+            {
+                SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[saveAdvancePayment]", ConfigManager.GetNewSqlConnection);
+                sp.AddParameterWithValue("@CmpCode", SqlDbType.BigInt, 0, ParameterDirection.Input, cmpcode);
+                return Convert.ToInt32(sp.ExecuteScalar());
+
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+
+            //return result;
+        }
+        public Int64 saveApproved(long cmpcode)
+        {
+            //var result = new IdentityResult();
+            try
+            {
+                SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[saveApproved]", ConfigManager.GetNewSqlConnection);
+                sp.AddParameterWithValue("@CmpCode", SqlDbType.BigInt, 0, ParameterDirection.Input, cmpcode);
                 return Convert.ToInt32(sp.ExecuteScalar());
 
             }
@@ -63,6 +94,94 @@ namespace PASystem.API.Repositories
             //return result;
         }
 
+        public Int64 savebusinesslist(long cmpcode)
+        {
+            //var result = new IdentityResult();
+            try
+            {
+                SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[savebusinesslist]", ConfigManager.GetNewSqlConnection);
+                sp.AddParameterWithValue("@CmpCode", SqlDbType.BigInt, 0, ParameterDirection.Input, cmpcode);
+                return Convert.ToInt32(sp.ExecuteScalar());
 
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+
+            //return result;
+        }
+
+        public Int64 savecategory(long cmpcode)
+        {
+            //var result = new IdentityResult();
+            try
+            {
+                SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[savecategory]", ConfigManager.GetNewSqlConnection);
+                sp.AddParameterWithValue("@CmpCode", SqlDbType.BigInt, 0, ParameterDirection.Input, cmpcode);
+                return Convert.ToInt32(sp.ExecuteScalar());
+
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+
+            //return result;
+        }
+
+        public Int64 savecustomer(long cmpcode)
+        {
+            //var result = new IdentityResult();
+            try
+            {
+                SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[savecustomer]", ConfigManager.GetNewSqlConnection);
+                sp.AddParameterWithValue("@CmpCode", SqlDbType.BigInt, 0, ParameterDirection.Input, cmpcode);
+                return Convert.ToInt32(sp.ExecuteScalar());
+
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+
+            //return result;
+        }
+
+        public Int64 saveprojectphase(long cmpcode)
+        {
+            //var result = new IdentityResult();
+            try
+            {
+                SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[saveprojectphase]", ConfigManager.GetNewSqlConnection);
+                sp.AddParameterWithValue("@CmpCode", SqlDbType.BigInt, 0, ParameterDirection.Input, cmpcode);
+                return Convert.ToInt32(sp.ExecuteScalar());
+
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+
+            //return result;
+        }
+
+        public Int64 savesales(long cmpcode)
+        {
+            //var result = new IdentityResult();
+            try
+            {
+                SqlStoredProcedure sp = new SqlStoredProcedure("[dbo].[savesales]", ConfigManager.GetNewSqlConnection);
+                sp.AddParameterWithValue("@CmpCode", SqlDbType.BigInt, 0, ParameterDirection.Input, cmpcode);
+                return Convert.ToInt32(sp.ExecuteScalar());
+
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+
+            //return result;
+        }
     }
 }
